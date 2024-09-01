@@ -1,0 +1,19 @@
+version: '2.4'
+
+services:
+  posterr:
+    image: posterr
+    container_name: posterr
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      TZ: "America/New_York"
+      NODE_ENV: production
+      BASEPATH: ""
+      ET: "false"
+    volumes:
+      - /c/docker/posterr/custom:/usr/src/app/public/custom
+      - /c/docker/posterr/config:/usr/src/app/config
+    ports:
+      - 9876:3000
